@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <style>
+        .container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h4 {
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #343a40;
+            margin-bottom: 10px;
+        }
+
+        .btn-group {
+            margin-top: 20px;
+        }
+
+        .btn-warning,
+        .btn-danger {
+            margin-right: 10px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="container my-4">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ movie.img.url }}" class="img-fluid" alt="{{ movie.name }}" width="300" height="350">
+        </div>
+        <div class="col-md-6">
+            <h4 class="mb-3">{{ movie.name }}</h4>
+            <p>{{ movie.desc }}</p>
+            <p><strong>Year:</strong> {{ movie.year }}</p>
+            <div class="btn-group">
+                <a class="btn btn-warning" href="{% url 'movieapp:update' movie.id %}">Update</a>
+                <a class="btn btn-danger" href="{% url 'movieapp:delete' movie.id %}">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

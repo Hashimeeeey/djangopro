@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Movie</title>
+    <style>
+        body {
+            background-color: #f4f4f4; /* Set a light background color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Add styles to the form container */
+        .form-container {
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            background-color: #ffffff; /* Set a white background color */
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add a subtle box-shadow */
+        }
+
+        /* Style form labels */
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold; /* Make labels bold for better visibility */
+        }
+
+        /* Style form inputs */
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px; /* Adjust padding for better input field size */
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Style the submit button */
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            padding: 12px 15px; /* Adjust padding for a larger button */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Add some spacing between form elements */
+        .form-element {
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h2 style="text-align: center;">Add Movie</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-element">
+                {{ form.name.label_tag }}
+                {{ form.name }}
+            </div>
+            <div class="form-element">
+                {{ form.desc.label_tag }}
+                {{ form.desc }}
+            </div>
+            <div class="form-element">
+                {{ form.year.label_tag }}
+                {{ form.year }}
+            </div>
+            <div class="form-element">
+                {{ form.img.label_tag }}
+                {{ form.img }}
+            </div>
+            <div class="form-element" style="text-align: center;">
+                <input type="submit" value="Add Movie">
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>

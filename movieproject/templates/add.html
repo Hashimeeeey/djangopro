@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+<style>
+    .movie-form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional: Style for submit button */
+.btn-primary {
+    margin-top: 15px;
+}
+</style>
+<div class="container mt-4">
+    <form method="POST" enctype="multipart/form-data" class="movie-form">
+        {% csrf_token %}
+
+        {{ form.name|as_crispy_field }}
+        {{ form.desc|as_crispy_field }}
+        {{ form.year|as_crispy_field }}
+        {{ form.img|as_crispy_field }}
+
+        <input type="submit" class="btn btn-primary" value="Submit">
+    </form>
+</div>
+
+{% endblock %}
